@@ -1,3 +1,6 @@
 {
-  "eslint.autoFixOnSave": true
+  "files.associations": {
+    ".prettierrc": "json"
+  },
+  "eslint.autoFixOnSave": true,
 }
