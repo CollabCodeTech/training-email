@@ -1,9 +1,6 @@
-import fastify from 'fastify';
+import server from './api/server';
 
-const server = fastify({ logger: true });
 const PORT = 5002;
-
-server.get('/', async () => ({ hello: 'world' }));
 
 const start = async () => {
   try {
