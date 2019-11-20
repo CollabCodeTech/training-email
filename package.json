@@ -28,7 +28,6 @@
     "sucrase": "^3.10.1"
   },
   "dependencies": {
-    "fastify": "^2.10.0",
-    "fastify-env": "^1.0.1"
+    "fastify": "^2.10.0"
   }
 }
