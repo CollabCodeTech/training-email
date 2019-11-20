@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  app:
+    build: ./
+    volumes:
+      - ./:/var/www/api-email
+    ports:
+      - 5002:5002
+    environment:
+      - NODE_ENV=development
+      - HOST=0.0.0.0
+      - PORT=5002
+    command: sh -c 'npm i && npm run dev'
