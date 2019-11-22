@@ -16,13 +16,15 @@ describe(`${path}`, () => {
 
   describe(`POST ${path}/confirmation`, () => {
     it('should return status 200 when send email valid in body', async () => {
-      const res = await request(server)
+      const {
+        status,
+        request: { _data }
+      } = await request(server)
         .post(`${path}/confirmation`)
         .send({ email: 'marco.bruno.br@gmail.com' });
 
-      const { status } = res;
-
       expect(status).toEqual(200);
+      expect(_data.email).toEqual('marco.bruno.br@gmail.com');
     });
   });
 });
