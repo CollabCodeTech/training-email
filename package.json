@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "jest": "NODE_ENV=test && jest",
+    "test": "docker-compose run app npm run jest"
   },
   "repository": {
     "type": "git",
@@ -18,16 +19,24 @@
   },
   "homepage": "https://github.com/CollabCodeTech/collabcodetraining-api-email#readme",
   "devDependencies": {
+    "@sucrase/jest-plugin": "^2.0.0",
     "eslint": "^6.6.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-prettier": "^3.1.1",
+    "jest": "^24.9.0",
     "nodemon": "^1.19.4",
     "prettier": "^1.19.1",
-    "sucrase": "^3.10.1"
+    "sucrase": "^3.10.1",
+    "supertest": "^4.0.2"
   },
   "dependencies": {
     "fastify": "^2.10.0"
+  },
+  "jest": {
+    "transform": {
+      ".(js)": "@sucrase/jest-plugin"
+    }
   }
 }

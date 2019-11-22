@@ -1,7 +1,10 @@
 import fastify from 'fastify';
 
-const server = fastify({ logger: true });
+import routes from './routes';
 
-server.get('/', async () => ({ hello: 'world' }));
+const logger = process.env.NODE_ENV === 'development';
+const server = fastify({ logger });
+
+routes(server);
 
 export default server;
