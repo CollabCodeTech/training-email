@@ -1,21 +1,23 @@
 /* eslint-disable import/prefer-default-export */
-import sendgridMail from '@sendgrid/mail';
+import mail from '../../lib/mail.lib';
 
-export async function sendUserConfirmationEmail(req, res) {
+export async function sendUserConfirmationEmail(
+  { body: { email: to, sandbox } },
+  res
+) {
   try {
-    const { SENDGRID_API_KEY } = process.env;
-    sendgridMail.setApiKey(SENDGRID_API_KEY);
-
     const email = {
-      to: 'marco.bruno.br@gmail.com',
-      from: 'gueio@collabcode.tech',
+      to,
       subject: 'teste do teste',
       html: 'Texto com um link <a href="#">Link</a>'
     };
 
-    await sendgridMail.send(email);
+    const resMail = await mail.send(email, sandbox);
+    const { statusCode: status } = resMail[0];
 
-    res.status(200).send({ hello: 'world' });
+    if (status === 200 || status === 202) {
+      res.status(200).send({ message: `Email enviado com sucesso para ${to}` });
+    }
   } catch (error) {
     res.status(500).send(error);
   }

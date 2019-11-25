@@ -1,9 +1,8 @@
 import request from 'supertest';
-
 import fastify from '../../../src/api/server';
 
-const path = '/user';
 const { server } = fastify;
+const path = '/user';
 
 describe(`${path}`, () => {
   beforeAll(async () => {
@@ -21,7 +20,7 @@ describe(`${path}`, () => {
         request: { _data }
       } = await request(server)
         .post(`${path}/confirmation`)
-        .send({ email: 'marco.bruno.br@gmail.com' });
+        .send({ email: 'marco.bruno.br@gmail.com', sandbox: true });
 
       expect(status).toEqual(200);
       expect(_data.email).toEqual('marco.bruno.br@gmail.com');
