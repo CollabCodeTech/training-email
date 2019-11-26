@@ -1,5 +1,6 @@
 import request from 'supertest';
 import fastify from '../../../src/api/server';
+import emailBuilder from '../../data-builder/email.builder';
 
 const { server } = fastify;
 const path = '/user';
@@ -14,16 +15,24 @@ describe(`${path}`, () => {
   });
 
   describe(`POST ${path}/confirmation`, () => {
-    it('should return status 200 when send email valid in body', async () => {
+    it('should return status 200 when send email and link in body', async () => {
+      const body = {
+        email: emailBuilder.emailValid(),
+        link: emailBuilder.linkValid()
+      };
       const {
         status,
         request: { _data }
       } = await request(server)
         .post(`${path}/confirmation`)
-        .send({ email: 'marco.bruno.br@gmail.com', sandbox: true });
+        .send({
+          ...body,
+          sandbox: true
+        });
 
       expect(status).toEqual(200);
-      expect(_data.email).toEqual('marco.bruno.br@gmail.com');
+      expect(_data.email).toEqual(body.email);
+      expect(_data.link).toEqual(body.link);
     });
   });
 });
