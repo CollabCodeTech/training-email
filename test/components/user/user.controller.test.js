@@ -34,5 +34,11 @@ describe(`${path}`, () => {
       expect(_data.email).toEqual(body.email);
       expect(_data.link).toEqual(body.link);
     });
+
+    it('should return status 400 when not send the body', async () => {
+      const { status } = await request(server).post(`${path}/confirmation`);
+
+      expect(status).toEqual(400);
+    });
   });
 });
