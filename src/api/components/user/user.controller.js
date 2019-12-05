@@ -10,13 +10,13 @@ export async function sendUserConfirmationEmail(
   }
 
   try {
-    const { email: to, link, sandbox } = body;
+    const { email: to, link, contentLink, sandbox } = body;
     const email = {
       to,
       subject: 'CollabCode Training - Confirmação de conta',
       html: `
         Olá!<br> 
-        Por favor, confirme sua conta da <b>CollabCode Training</b> clicando no link a seguir: <a href="${link}">${link}</a>
+        Por favor, confirme sua conta da <b>CollabCode Training</b> clicando no link a seguir: <a href="${link}" taget="_blank">${contentLink}</a>
       `
     };
 
