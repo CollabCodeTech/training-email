@@ -4,7 +4,7 @@ services:
   app:
     build: ./
     volumes:
-      - ./:/var/www/api-email
+      - ./:/app
     ports:
       - 3002:${PORT}
     environment:
