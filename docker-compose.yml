@@ -3,8 +3,6 @@ version: '3.7'
 services:
   app:
     build: ./
-    volumes:
-      - ./:/app
     ports:
       - 3002:${PORT}
     environment:
@@ -12,4 +10,3 @@ services:
       - HOST
       - PORT
       - SENDGRID_API_KEY
-    command: sh -c 'npm i && npm run dev'
