@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 
 services:
   app:
@@ -6,10 +6,10 @@ services:
     volumes:
       - ./:/var/www/api-email
     ports:
-      - 5002:5002
+      - 3002:${PORT}
     environment:
-      - NODE_ENV=development
-      - HOST=0.0.0.0
-      - PORT=5002
-      - SENDGRID_API_KEY=
+      - NODE_ENV
+      - HOST
+      - PORT
+      - SENDGRID_API_KEY
     command: sh -c 'npm i && npm run dev'
