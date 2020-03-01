@@ -1,4 +1,7 @@
+import { config } from 'dotenv';
 import server from './api/server';
+
+config();
 
 const start = async () => {
   try {
