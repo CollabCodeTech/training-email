@@ -35,7 +35,7 @@
   "dependencies": {
     "@sendgrid/mail": "^6.4.0",
     "faker": "^4.1.0",
-    "fastify": "^2.10.0"
+    "fastify": "^2.15.1"
   },
   "jest": {
     "transform": {
